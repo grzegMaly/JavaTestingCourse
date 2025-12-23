@@ -68,4 +68,10 @@ public class ConditionalTest {
     void testDevEnv() {
         System.out.println("Enabled for dev env");
     }
+
+    @Test
+    @EnabledIfSystemProperty(named = "sys_prop", matches = "test")
+    void testSysProps() {
+        System.out.println("Enabled for system property");
+    }
 }
