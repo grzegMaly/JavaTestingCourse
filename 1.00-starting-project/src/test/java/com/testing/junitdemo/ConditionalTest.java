@@ -56,4 +56,10 @@ public class ConditionalTest {
     void testEnabledOnJreRange() {
         System.out.println("Enabled for range {17, 19}");
     }
+
+    @Test
+    @EnabledForJreRange(min = JRE.JAVA_18)
+    void testEnabledForJreRangeMin18() {
+        System.out.println("Enabled for range min 18");
+    }
 }
