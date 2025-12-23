@@ -62,4 +62,10 @@ public class ConditionalTest {
     void testEnabledForJreRangeMin18() {
         System.out.println("Enabled for range min 18");
     }
+
+    @Test
+    @EnabledIfEnvironmentVariable(named = "prof", matches = "DEV")
+    void testDevEnv() {
+        System.out.println("Enabled for dev env");
+    }
 }
