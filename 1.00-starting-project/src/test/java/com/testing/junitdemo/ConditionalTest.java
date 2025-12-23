@@ -27,4 +27,10 @@ public class ConditionalTest {
     void testForMAC() {
         System.out.println("Enabled on MAC");
     }
+
+    @Test
+    @EnabledOnOs(OS.LINUX)
+    void testForLinux() {
+        System.out.println("Enabled on Linux");
+    }
 }
