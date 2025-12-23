@@ -2,6 +2,8 @@ package com.testing.junitdemo;
 
 import org.junit.jupiter.api.*;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 //@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
@@ -32,6 +34,56 @@ class DemoUtilsTest {
         assertNull(demoUtils.checkNull(str1), "Object should be null");
         assertNotNull(demoUtils.checkNull(str2), "Object should not be null");
     }
+
+    @Test
+    @DisplayName("Same and Not Same")
+    void testSameAndNotSame() {
+        String str = "Str1";
+        assertSame(demoUtils.getAcademy(), demoUtils.getAcademyDuplicate(), "Objects should refer to the same object");
+        assertNotSame(str, demoUtils.getAcademy(), "Objects shouldnot refer to the same object");
+    }
+
+    @Test
+    @DisplayName("True and False")
+    void testTrueFalse() {
+        int gradeOne = 10;
+        int graneTwo = 5;
+        assertTrue(demoUtils.isGreater(gradeOne, graneTwo), "This should return true");
+        assertFalse(demoUtils.isGreater(graneTwo, gradeOne), "This should return false");
+    }
+
+
+    @Test
+    @DisplayName("Array Equals")
+    void testArrayEquals() {
+
+        String[] stringArr = {"A", "B", "C"};
+        assertArrayEquals(stringArr, demoUtils.getFirstThreeLettersOfAlphabet(), "Arrays should be equal");
+    }
+
+    @Test
+    @DisplayName("Iterable Equals")
+    void testIterableEquals() {
+
+        List<String> theList = List.of("luv", "2", "code");
+        assertIterableEquals(theList, demoUtils.getAcademyInList(), "Expected list should be same as actual list");
+    }
+
+    @Test
+    @DisplayName("Lines Match")
+    void testLinesMatch() {
+        List<String> theList = List.of("luv", "2", "code");
+        assertLinesMatch(theList, demoUtils.getAcademyInList(), "Lines should match");
+    }
+
+    @Test
+    @DisplayName("Throws and Does Not Throw")
+    void testThrowsAndDoesNotThrow() {
+        assertThrows(Exception.class, () -> demoUtils.throwException(-1), "Should throw exception");
+        assertDoesNotThrow(() -> demoUtils.throwException(9), "Should not throw exception");
+    }
+
+    
 
     /*@AfterEach
     void tearDownAfterEach() {
