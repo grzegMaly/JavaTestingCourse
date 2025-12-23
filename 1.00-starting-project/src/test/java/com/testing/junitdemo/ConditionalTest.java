@@ -4,7 +4,9 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.condition.EnabledOnJre;
 import org.junit.jupiter.api.condition.EnabledOnOs;
+import org.junit.jupiter.api.condition.JRE;
 import org.junit.jupiter.api.condition.OS;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -38,5 +40,17 @@ public class ConditionalTest {
     @EnabledOnOs({OS.LINUX, OS.WINDOWS})
     void testForLinuxAndWindows() {
         System.out.println("Enabled on Linux And Windows");
+    }
+
+    @Test
+    @EnabledOnJre(JRE.JAVA_17)
+    void testEnabledOnJre17() {
+        System.out.println("Enabled on JRE-17");
+    }
+
+    @Test
+    @EnabledOnJre(JRE.JAVA_21)
+    void testEnabledOnJre21() {
+        System.out.println("Enabled on JRE-21");
     }
 }
