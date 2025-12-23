@@ -21,4 +21,10 @@ public class ConditionalTest {
     void testForWindows() {
         System.out.println("Enabled on Windows");
     }
+
+    @Test
+    @EnabledOnOs(OS.MAC)
+    void testForMAC() {
+        System.out.println("Enabled on MAC");
+    }
 }
