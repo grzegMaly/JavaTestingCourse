@@ -8,7 +8,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 //@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-@TestMethodOrder(MethodOrderer.Random.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class DemoUtilsTest {
 
     private DemoUtils demoUtils;
@@ -19,6 +19,7 @@ class DemoUtilsTest {
     }
 
     @Test
+    @Order(1)
     @DisplayName("Equals and Not Equals")
     void test_equals_and_not_equals() {
 
@@ -27,6 +28,7 @@ class DemoUtilsTest {
     }
 
     @Test
+    @Order(2)
     @DisplayName("Null and Not Null")
     void test_null_and_not_null() {
 
@@ -38,6 +40,7 @@ class DemoUtilsTest {
     }
 
     @Test
+    @Order(3)
     @DisplayName("Same and Not Same")
     void testSameAndNotSame() {
         String str = "Str1";
@@ -46,6 +49,7 @@ class DemoUtilsTest {
     }
 
     @Test
+    @Order(4)
     @DisplayName("True and False")
     void testTrueFalse() {
         int gradeOne = 10;
@@ -56,6 +60,7 @@ class DemoUtilsTest {
 
 
     @Test
+    @Order(5)
     @DisplayName("Array Equals")
     void testArrayEquals() {
 
@@ -64,6 +69,7 @@ class DemoUtilsTest {
     }
 
     @Test
+    @Order(6)
     @DisplayName("Iterable Equals")
     void testIterableEquals() {
 
@@ -72,6 +78,7 @@ class DemoUtilsTest {
     }
 
     @Test
+    @Order(7)
     @DisplayName("Lines Match")
     void testLinesMatch() {
         List<String> theList = List.of("luv", "2", "code");
@@ -79,6 +86,7 @@ class DemoUtilsTest {
     }
 
     @Test
+    @Order(8)
     @DisplayName("Throws and Does Not Throw")
     void testThrowsAndDoesNotThrow() {
         assertThrows(Exception.class, () -> demoUtils.throwException(-1), "Should throw exception");
@@ -86,6 +94,7 @@ class DemoUtilsTest {
     }
 
     @Test
+    @Order(9)
     @DisplayName("Timeout")
     void testTimeout() {
         assertTimeout(Duration.ofSeconds(3), () -> demoUtils.checkTimeout(), "Method should execute in 3 seconds");
