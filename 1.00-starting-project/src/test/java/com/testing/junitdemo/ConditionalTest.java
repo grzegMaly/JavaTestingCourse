@@ -33,4 +33,10 @@ public class ConditionalTest {
     void testForLinux() {
         System.out.println("Enabled on Linux");
     }
+
+    @Test
+    @EnabledOnOs({OS.LINUX, OS.WINDOWS})
+    void testForLinuxAndWindows() {
+        System.out.println("Enabled on Linux And Windows");
+    }
 }
