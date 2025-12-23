@@ -4,11 +4,11 @@ import org.junit.jupiter.api.*;
 
 import java.time.Duration;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 //@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
+@TestMethodOrder(MethodOrderer.DisplayName.class)
 class DemoUtilsTest {
 
     private DemoUtils demoUtils;
