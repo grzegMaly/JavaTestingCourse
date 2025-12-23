@@ -4,10 +4,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import org.junit.jupiter.api.condition.EnabledOnJre;
-import org.junit.jupiter.api.condition.EnabledOnOs;
-import org.junit.jupiter.api.condition.JRE;
-import org.junit.jupiter.api.condition.OS;
+import org.junit.jupiter.api.condition.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ConditionalTest {
@@ -52,5 +49,11 @@ public class ConditionalTest {
     @EnabledOnJre(JRE.JAVA_21)
     void testEnabledOnJre21() {
         System.out.println("Enabled on JRE-21");
+    }
+
+    @Test
+    @EnabledForJreRange(min = JRE.JAVA_17, max = JRE.JAVA_19)
+    void testEnabledOnJreRange() {
+        System.out.println("Enabled for range {17, 19}");
     }
 }
