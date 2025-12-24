@@ -64,4 +64,12 @@ public class ApplicationExampleTest {
                 student.getStudentGrades().getMathGradeResults()
         ));
     }
+
+    @Test
+    @DisplayName("Add grade results for student grades not equal")
+    void addGradeResultForStudentGradeNotEqual() {
+        assertNotEquals(21.37, studentGrades.addGradeResultsForSingleClass(
+                student.getStudentGrades().getMathGradeResults()
+        ));
+    }
 }
