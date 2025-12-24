@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CollegeStudent implements Student {
 
+    private int id;
     private String firstname;
     private String lastname;
     private String emailAddress;
