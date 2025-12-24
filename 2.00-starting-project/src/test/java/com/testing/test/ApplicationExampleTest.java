@@ -107,4 +107,11 @@ public class ApplicationExampleTest {
         assertNotNull(studentTwo.getEmailAddress());
         assertNull(studentGrades.checkNull(studentTwo.getStudentGrades()));
     }
+
+    @Test
+    @DisplayName("Verify students are prototypes")
+    void verifyStudentsArePrototypes() {
+        CollegeStudent studentTwo = context.getBean("collegeStudent", CollegeStudent.class);
+        assertNotSame(student, studentTwo);
+    }
 }
