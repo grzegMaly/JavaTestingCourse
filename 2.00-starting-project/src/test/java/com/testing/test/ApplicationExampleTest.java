@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +38,9 @@ public class ApplicationExampleTest {
 
     @Autowired
     private StudentGrades studentGrades;
+
+    @Autowired
+    private ApplicationContext context;
 
     @BeforeEach
     public void beforeEach() {
@@ -89,5 +93,18 @@ public class ApplicationExampleTest {
     void checkNullForStudentTest() {
         assertNotNull(studentGrades.checkNull(student.getStudentGrades().getMathGradeResults()),
                 "failure - should not be null");
+    }
+
+    @Test
+    @DisplayName("Create Student without grade init")
+    void createStudentWithoutGradeInit() {
+        CollegeStudent studentTwo = context.getBean("collegeStudent", CollegeStudent.class);
+        studentTwo.setFirstname("Chad");
+        studentTwo.setLastname("Darby");
+        studentTwo.setEmailAddress("chad.darby@testing.com");
+        assertNotNull(studentTwo.getFirstname());
+        assertNotNull(studentTwo.getLastname());
+        assertNotNull(studentTwo.getEmailAddress());
+        assertNull(studentGrades.checkNull(studentTwo.getStudentGrades()));
     }
 }
