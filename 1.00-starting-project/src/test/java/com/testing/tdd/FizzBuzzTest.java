@@ -56,4 +56,12 @@ public class FizzBuzzTest {
     void testFromCsvSource(int value, String expected) {
         assertEquals(expected, FizzBuzz.compute(value), "Should return %s".formatted(expected));
     }
+
+    @Order(6)
+    @DisplayName("From CSV Med Source")
+    @ParameterizedTest(name = "value = {0}, expected = {1}")
+    @CsvFileSource(resources = "/medium-test-data.csv")
+    void testFromCsvMedSource(int value, String expected) {
+        assertEquals(expected, FizzBuzz.compute(value), "Should return %s".formatted(expected));
+    }
 }
