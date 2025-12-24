@@ -15,8 +15,7 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest(classes = MvcTestingExampleApplication.class)
@@ -76,5 +75,16 @@ public class MockAnnotationTest {
                 applicationService.checkNull(studentOne.getStudentGrades().getMathGradeResults()),
                 "Object should not be null"
         );
+    }
+
+    @Test
+    @DisplayName("Throw Runtime Exception")
+    void throwRuntimeExceptionTest() {
+        CollegeStudent nullStudent = (CollegeStudent) context.getBean("collegeStudent");
+        doThrow(new RuntimeException()).when(applicationDao).checkNull(nullStudent);
+
+        assertThrows(RuntimeException.class, () -> applicationService.checkNull(nullStudent));
+
+        verify(applicationDao, times(1)).checkNull(nullStudent);
     }
 }
