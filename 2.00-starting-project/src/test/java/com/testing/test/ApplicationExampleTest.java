@@ -83,4 +83,11 @@ public class ApplicationExampleTest {
     void isGradeGreaterStudentGradesFalse() {
         assertFalse(studentGrades.isGradeGreater(50, 87), "failure - should be false");
     }
+
+    @Test
+    @DisplayName("Check Null for Student")
+    void checkNullForStudentTest() {
+        assertNotNull(studentGrades.checkNull(student.getStudentGrades().getMathGradeResults()),
+                "failure - should not be null");
+    }
 }
