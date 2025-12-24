@@ -24,4 +24,8 @@ public class CollegeStudent implements Student {
     public String getFullName() {
         return getFirstname() + " " + getLastname();
     }
+
+    private String getFirstNameAndId() {
+        return getFirstname() + " " + getId();
+    }
 }
