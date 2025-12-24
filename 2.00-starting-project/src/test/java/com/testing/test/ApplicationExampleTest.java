@@ -114,4 +114,16 @@ public class ApplicationExampleTest {
         CollegeStudent studentTwo = context.getBean("collegeStudent", CollegeStudent.class);
         assertNotSame(student, studentTwo);
     }
+
+    @Test
+    @DisplayName("Find Grade Point Average")
+    void findGradePointAverage() {
+        assertAll("Testing all assertEquals",
+                () -> assertEquals(353.25, studentGrades.addGradeResultsForSingleClass(
+                        student.getStudentGrades().getMathGradeResults()
+                )),
+                () -> assertEquals(88.31, studentGrades.findGradePointAverage(
+                        student.getStudentGrades().getMathGradeResults()
+                )));
+    }
 }
