@@ -13,8 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(classes = MvcTestingExampleApplication.class)
 public class ApplicationExampleTest {
@@ -71,5 +70,11 @@ public class ApplicationExampleTest {
         assertNotEquals(21.37, studentGrades.addGradeResultsForSingleClass(
                 student.getStudentGrades().getMathGradeResults()
         ));
+    }
+
+    @Test
+    @DisplayName("Is grade greater")
+    void isGradeGreaterStudentGrades() {
+        assertTrue(studentGrades.isGradeGreater(90, 75), "failure - should be true");
     }
 }
