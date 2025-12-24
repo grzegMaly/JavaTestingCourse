@@ -87,4 +87,16 @@ public class MockAnnotationTest {
 
         verify(applicationDao, times(1)).checkNull(nullStudent);
     }
+
+    @Test
+    @DisplayName("Multiple Calls")
+    void multipleCallsTest() {
+        CollegeStudent nullStudent = (CollegeStudent) context.getBean("collegeStudent");
+        when(applicationDao.checkNull(nullStudent))
+                .thenThrow(new RuntimeException())
+                .thenReturn("Do not throw exception");
+
+        assertThrows(RuntimeException.class, () -> applicationService.checkNull(nullStudent));
+        assertEquals("Do not throw exception", applicationService.checkNull(nullStudent));
+    }
 }
