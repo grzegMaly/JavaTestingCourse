@@ -77,4 +77,10 @@ public class ApplicationExampleTest {
     void isGradeGreaterStudentGrades() {
         assertTrue(studentGrades.isGradeGreater(90, 75), "failure - should be true");
     }
+
+    @Test
+    @DisplayName("Is grade greater false")
+    void isGradeGreaterStudentGradesFalse() {
+        assertFalse(studentGrades.isGradeGreater(50, 87), "failure - should be false");
+    }
 }
